@@ -12,6 +12,21 @@
     <meta name="description" content="Ampersand-Interactive: Transforming complexity into simplicity." />
   </head>
   <body>
+    <script>
+      // SPA redirect script from https://github.com/rafgraph/spa-github-pages
+      (function(l) {
+        if (l.search && l.search.indexOf('redirect=') !== -1) {
+          var q = {};
+          l.search.slice(1).split('&').forEach(function(v) {
+            var a = v.split('=');
+            q[a[0]] = a.slice(1).join('=');
+          });
+          if (q.redirect) {
+            window.history.replaceState(null, null, q.redirect);
+          }
+        }
+      }(window.location));
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
