@@ -1,0 +1,42 @@
+<!-- This file is a copy of index.html to support client-side routing on GitHub Pages. -->
+<!-- See: https://github.com/rafgraph/spa-github-pages -->
+
+<!-- The contents below are copied from index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ampersand-Interactive</title>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="description" content="Ampersand-Interactive: Transforming complexity into simplicity." />
+  </head>
+  <body>
+    <script>
+      // Full SPA redirect script from https://github.com/rafgraph/spa-github-pages
+      (function() {
+        var l = window.location;
+        var pathname = l.pathname;
+        var search = l.search;
+        var hash = l.hash;
+        // If the redirect param is not present, redirect to root with original path in query
+        if (!search.match(/\bredirect=/)) {
+          var newSearch = '?redirect=' + encodeURIComponent(pathname + (search || '') + (hash || ''));
+          l.replace('/' + newSearch);
+        } else {
+          // If redirect param is present, restore the original path
+          var q = {};
+          search.slice(1).split('&').forEach(function(v) {
+            var a = v.split('=');
+            q[a[0]] = a.slice(1).join('=');
+          });
+          if (q.redirect) {
+            window.history.replaceState(null, null, decodeURIComponent(q.redirect));
+          }
+        }
+      })();
+    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
